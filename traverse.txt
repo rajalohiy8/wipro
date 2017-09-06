@@ -1,0 +1,78 @@
+import java.util.*;
+// Read only region start
+class UserMainCode
+{
+
+	public int findKey(int[] input1,int input2){
+		// Read only region end
+int sum=0;
+		if(input2>0){
+		ArrayList<Integer> arr=new ArrayList<Integer>();
+		int i=0,l=0;
+        for(l=0;l<input2;l++)
+		{
+			if(input1[l]>0)
+			{
+				continue;
+			}
+			else
+			{
+				break;
+			}
+		}
+		if(l==input2)
+		{
+			int max=input1[0];
+			for(int j=1;j<input2;j++)
+		    {
+			     if(input1[j]>max)
+			     {
+				    max=input1[j];
+			     }
+		    }
+			 sum=max;
+		}
+		else{
+		      while(i<input2)
+		      {
+				  
+			     int x=0;
+				  if(input1[i]>=100)
+				  {
+				  x=input1[i]/100;
+					  i=input1[i]%100;
+			  }
+				  else
+				  {
+					  x=input1[i]/10;
+					  i=input1[i]%10;
+				  }
+			     if(x>0)
+			     {
+			         arr.add(x);
+				    // i=input1[i]%10;
+			     }
+			     else
+			     {
+				    arr.add(Math.abs(x));
+				    break;
+			     }
+		      }
+		
+		      sum=arr.get(0);
+		      for(int j=1;j<arr.size();j++)
+		      {
+			     if(j%2==0)
+			     {
+				    sum+=arr.get(j);
+			     }
+			     else
+			     {
+				    sum-=arr.get(j);
+			     }
+		      }
+		  }
+		}
+		  return sum;
+	}
+}
